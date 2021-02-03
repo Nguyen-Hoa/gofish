@@ -1,0 +1,63 @@
+.Login {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.login-box {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    margin-top: 15vh;
+    padding-bottom: 5vh;
+    padding-left: 2vh;
+    padding-right: 2vh;
+    min-height: max-content;
+    min-width: max-content;
+    background: linear-gradient(45deg, #ffa200 20%, #fff800);
+    border-radius: 33px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.login-box header {
+    text-align: center;
+    font-size: xx-large;
+    font-weight: 200;
+}
+
+.login-box-item {
+    text-align: center;
+    padding: 1%;
+}
+
+.login-box-item input {
+    font-size: small; 
+    border-radius: 3px;
+    border-width: 1px;
+    padding-top: .75vh;
+    padding-bottom: .75vh;
+}
+
+.login-box-item input::placeholder {
+    font-size: small;
+    font-weight: 100;
+}
+
+.login-box-item input:focus {
+    outline: none;
+}
+
+.login-box p{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    color: gray;
+    font-size: smaller;
+}
+
+.login-box p a{
+    color:gray;
+}

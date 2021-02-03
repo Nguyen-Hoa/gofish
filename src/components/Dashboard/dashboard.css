@@ -1,0 +1,44 @@
+.Dashboard {
+    display: flex;
+    flex-direction: row;
+}
+
+.dashboard-header {
+    position: absolute;
+    top: 0;
+    height: 7.5vh;
+    width: 100%;
+    min-width: max-content;
+    min-height: max-content;
+    background: linear-gradient(45deg, #ffa200 20%, #fff800);
+
+    font-weight: 200;
+    font-size: x-large;
+}
+
+.dashboard-tables {
+    display: flex;
+    flex-direction: row;
+    margin-top: 25vh;
+    width: 100%;
+
+    min-width: max-content;
+}
+
+.dashboard-table {
+    width: 100%;
+    padding-left: 2vh;
+    padding-right: 2vh;
+    min-width: max-content;
+    min-height: max-content;
+    font-size: large;
+    font-weight: 200;
+}
+
+.dashboard-user-table {
+    background: #ffa200;
+}
+
+.dashboard-global-table {
+    background: #fff800;
+}

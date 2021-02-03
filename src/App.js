@@ -1,42 +1,21 @@
 /* global fetch */
 import React, { useState, useEffect } from 'react';
-import logo from './logo.svg';
+import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import './App.css';
 
+import Login from './components/Login/Login.jsx';
+import SignUp from './components/SignUp/SignUp.jsx';
+import Dashboard from './components/Dashboard/Dashboard.jsx';
+
 const App = () => {
-  const [message, setMessage] = useState('...loading')
-
-  useEffect(() => {
-    async function fetchData () {
-      try {
-        let data = await (await fetch('/api')).json()
-        setMessage(data.message)
-      } catch (err) {
-        setMessage(err.message)
-      }
-    }
-    fetchData()
-  })
-
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>{message}</p>
-        <p>Change me!</p>
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter className="App">
+      <Switch>
+        <Route exact path='/' component={Login}/>
+        <Route exact path='/sign-up' component={SignUp}/>
+        <Route exact path='/dashboard' component={Dashboard}/>
+      </Switch>
+    </BrowserRouter>
   );
 }
 
