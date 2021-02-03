@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Spring, config } from 'react-spring/renderprops';
 
 import './dashboard.css';

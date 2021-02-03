@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Spring, config } from 'react-spring/renderprops';
 import Button from '../button/Button';
@@ -28,17 +28,6 @@ const PasswordField = ({password, setPassword}) => {
             />
         </div>
     )
-}
-
-const SignInButton = ({ onClick, label}) => {
-    return(
-        <button
-            onClick={onClick}
-            className='login-button'
-        >
-            {label}
-        </button>
-    );
 }
 
 const SignInForm = ({email, setEmail, password, setPassword, history}) => {
