@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Spring, config } from 'react-spring/renderprops';
+import Input from '../basic-text-input/BasicTextInput';
 import Button from '../button/Button';
 
 import './signup.css';
@@ -10,48 +11,48 @@ const SignUpForm = (props) => {
         <div className="signup-box">
             <header>Create a new account</header>
             <div className="signup-box-item">
-                <input
+                <Input
                     placeholder="First Name"
                     value={props.firstName}
-                    onChange={(e) => props.setFirstName(e.target.value)}
+                    onChange={props.setFirstName}
                 />
             </div>
             <div className="signup-box-item">
-                <input
+                <Input
                     placeholder="Last Name"
                     value={props.lastName}
-                    onChange={(e) => props.setLastName(e.target.value)}
+                    onChange={props.setLastName}
                 />
             </div>
             <div className="signup-box-item">
-                <input
+                <Input
                     placeholder="Email"
                     value={props.email}
-                    onChange={(e) => props.setEmail(e.target.value)}
+                    onChange={props.setEmail}
                 />
             </div>
             <div className="signup-box-item">
-                <input
+                <Input
                     placeholder="Last Name"
                     value={props.password}
-                    onChange={(e) => props.setPassword(e.target.value)}
+                    onChange={props.setPassword}
                 />
             </div>
             <div className="signup-box-item">
-                <Button label="Sign In" onClick={() => props.history.push('/dashboard')}/>
+                <Button label="Sign Up" onClick={() => props.history.push('/dashboard')}/>
             </div>
-            <p>No account yet? <a href="http://localhost:3000">Sign up here!</a></p>
         </div>
     )
 }
 
 export default function SignUp (){
-    const [firstName, setFirstName] = useState();
-    const [lastName, setLastName] = useState();
-    const [password, setPassword] = useState();
-    const [email, setEmail] = useState();
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [password, setPassword] = useState('');
+    const [email, setEmail] = useState('');
     const history = useHistory();
 
+    console.log({firstName, lastName, password, email})
     return (
         <div className="SignUp">
             <Spring

@@ -1,0 +1,16 @@
+.basic-input input {
+    font-size: small; 
+    border-radius: 3px;
+    border-width: 1px;
+    padding-top: .75vh;
+    padding-bottom: .75vh;
+}
+
+.basic-input input::placeholder {
+    font-size: small;
+    font-weight: 100;
+}
+
+.basic-input input:focus {
+    outline: none;
+}
