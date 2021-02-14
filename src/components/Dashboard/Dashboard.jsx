@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
+import SessionContext from '../../db/session';
+import { faunaQueries } from '../../db/query-manager';
 import { Spring, config } from 'react-spring/renderprops';
 import Button from './../button/Button';
 
@@ -25,8 +27,18 @@ const GlobalTable = () => {
     );
 }
 
+const handleLogOut = (event, sessionContext, history) => {
+    return faunaQueries.logout()
+    .then(() => {
+        sessionContext.dispatch({ type: 'logout', data: null });
+        history.push('/');
+        event.preventDefault();
+    })
+}
+
 export default function Dashboard ({ angler }){
     const history = useHistory();
+    const sessionContext = useContext(SessionContext)
 
     return(
         <div>
@@ -40,7 +52,7 @@ export default function Dashboard ({ angler }){
                         <header className="dashboard-header">
                             <div>{ angler ? `${angler}'s` : `Angler's`} Dashboard</div>
                             <div className="log-out-button">
-                                <Button label="Log out" onClick={() => history.push('/')}/>
+                                <Button label="Log out" onClick={(e) => handleLogOut(e, sessionContext, history)}/>
                             </div>
                         </header>
                         <div className="dashboard-tables">

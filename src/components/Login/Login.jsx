@@ -1,12 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
+import SessionContext from './../../db/session';
+import { faunaQueries } from './../../db/query-manager'
+
+import './login.css';
 import { Spring, config } from 'react-spring/renderprops';
 import Button from '../button/Button';
 import Input from '../basic-text-input/BasicTextInput';
 
-import './login.css';
+const handleLogin = (email, password, history, session) => {
+    faunaQueries.login(email, password).then(e => {
+        if (e === false){
+            alert('login failed');
+        }
+        else {
+            session.dispatch({ type: 'login', data: e });
+            history.push('/dashboard');
+        }
+    })
+    .catch(e => console.log('error at login...', e));
+}
 
-const SignInForm = ({history, email, setEmail, password, setPassword}) => {
+const SignInForm = ({history, email, setEmail, password, setPassword, session}) => {
     return (
         <div className="login-box">
             <header>Welcome to GoFish 2021</header>
@@ -17,20 +32,19 @@ const SignInForm = ({history, email, setEmail, password, setPassword}) => {
                 <Input placeholder="Password" value={password} onChange={setPassword}/>
             </div>
             <div className="login-box-item">
-                <Button label="Sign In" onClick={() => history.push('/dashboard')}/>
+                <Button label="Sign In" onClick={() => handleLogin(email, password, history, session)}/>
             </div>
             <p>No account yet? <button className="sign-up-button" onClick={() => history.push('/sign-up')}>Sign up here!</button></p>
         </div>
     )
 }
 
-
 export default function Login (){
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
     const history = useHistory();
+    const sessionContext = useContext(SessionContext);
 
-    console.log(`email: ${email} password: ${password}`)
     return (
         <div className="Login">
             <Spring
@@ -46,6 +60,7 @@ export default function Login (){
                             password={password}
                             setPassword={setPassword}
                             history={history}
+                            session={sessionContext}
                         />
                    </div>
                 }

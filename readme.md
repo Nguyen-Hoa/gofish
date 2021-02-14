@@ -1,8 +1,10 @@
 ## TODO:
 [x] Login Form scaffold
 [x] Sign Up Form scaffold
-[ ] Dashboard scaffold {sign out button, add fish}
-[-] connect backend
-    - Auth0?
-    - Fauna?
-    - Serverless is what we want. So no 'backend'...
+[ ] Dashboard scaffold {add fish}
+[ ] Form validation: email, toLowercase (login), hide pass
+[x] connect backend
+    [x] Fauna
+        [ ] Connect Fishes to Anglers3
+        [ ] Get Global stats
+        [ ] Get Angler stats
