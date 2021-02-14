@@ -1,16 +1,9 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import { Spring, config } from 'react-spring/renderprops';
+import Button from './../button/Button';
 
 import './dashboard.css';
-
-
-const Header = ({ angler }) => {
-    return(
-        <div className="dashboard-header">
-            {angler || 'Angler'} Dashboard
-        </div>
-    );
-}
 
 const UserTable = () => {
     return(
@@ -32,7 +25,9 @@ const GlobalTable = () => {
     );
 }
 
-export default function Dashboard (){
+export default function Dashboard ({ angler }){
+    const history = useHistory();
+
     return(
         <div>
             <Spring
@@ -42,8 +37,11 @@ export default function Dashboard (){
             >
                 {props =>
                     <div className="Dashboard" style={props}>
-                        <header>
-                            <Header/>
+                        <header className="dashboard-header">
+                            <div>{ angler ? `${angler}'s` : `Angler's`} Dashboard</div>
+                            <div className="log-out-button">
+                                <Button label="Log out" onClick={() => history.push('/')}/>
+                            </div>
                         </header>
                         <div className="dashboard-tables">
                             <UserTable/>

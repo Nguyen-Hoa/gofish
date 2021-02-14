@@ -19,7 +19,7 @@ const SignInForm = ({history, email, setEmail, password, setPassword}) => {
             <div className="login-box-item">
                 <Button label="Sign In" onClick={() => history.push('/dashboard')}/>
             </div>
-            <p>No account yet? <a onClick={() => history.push('/sign-up')}>Sign up here!</a></p>
+            <p>No account yet? <button className="sign-up-button" onClick={() => history.push('/sign-up')}>Sign up here!</button></p>
         </div>
     )
 }

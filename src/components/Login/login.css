@@ -41,8 +41,19 @@
     font-size: smaller;
 }
 
-.login-box p a{
-    color:gray;
+.sign-up-button {
+    background-color: transparent;
+    font-size: small;
     text-decoration: underline;
+    border: none;
+    color: gray;
     cursor: pointer;
+}
+
+.sign-up-button:hover {
+    font-size: medium;
+}
+
+.sign-up-button:focus {
+    outline: none;
 }
